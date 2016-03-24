@@ -49,6 +49,27 @@ It can be helpful to understand the purpose of the options on the Docker command
 
   * `-d` runs a container in Daemon mode, and `--rm` causes Docker to automatically remove a container when it shuts down. Note that this option is not used with `-d` for the Selenium Grid containers, as they run in the background.
 
+### Docker Compose ###
+
+An example Compose file for Docker Compose has also been included. This file configures Docker containers for Selenium Hub, Chrome and Firefox nodes, and for running PHPUnit.
+
+To run the example PHPUnit/php-webdriver tests, use the following command:
+
+    docker-compose run php-webdriver
+
+Note that by using Docker Compose's 'run' command, the php-webdriver container will be shut down once the tests have run, but the Selenium Grid will continue running in the background. You can verify this using `docker ps`:
+
+    # Summarised 'docker ps' output from my development machine:
+
+    CONTAINER ID    IMAGE                    ...    PORTS                    NAMES
+    4278ccf89da9    selenium/node-chrome     ...                             dockerphpwebdriver_chrome_1
+    7d864086c7a2    selenium/node-firefox    ...                             dockerphpwebdriver_firefox_1
+    0eb85c56fac4    selenium/hub             ...    0.0.0.0:4444->4444/tcp   dockerphpwebdriver_hub_1
+
+When you're finished using the Selenium Grid, you can remove these containers:
+
+    docker-compose rm -f
+
 ## License ##
 
 This Docker image is licensed under the MIT License.

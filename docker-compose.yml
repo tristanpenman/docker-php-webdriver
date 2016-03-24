@@ -1,0 +1,34 @@
+version: '2'
+services:
+  hub:
+    image: selenium/hub
+    ports:
+      - "4444:4444"
+  chrome:
+    image: selenium/node-chrome
+    depends_on:
+      - hub
+    links:
+      - hub
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=hub
+  firefox:
+    image: selenium/node-firefox
+    depends_on:
+      - hub
+    links:
+      - hub
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=hub
+  php-webdriver:
+    depends_on:
+      - chrome
+      - firefox
+      - hub
+    image: tristanpenman/php-webdriver
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=hub
+    links:
+      - hub
+    volumes:
+      - .:/wd/src
