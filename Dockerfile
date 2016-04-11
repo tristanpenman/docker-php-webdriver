@@ -23,4 +23,11 @@ RUN cd /wd \
 RUN mkdir -p /wd/src
 WORKDIR /wd/src
 
+# Set up entrypoint script
+ENV SCRIPTS_DIR /scripts
+RUN mkdir -p /scripts/entrypoint.d
+COPY docker-entrypoint.sh /scripts/entrypoint.sh
+RUN chmod +x /scripts/entrypoint.sh
+ENTRYPOINT ["/scripts/entrypoint.sh"]
+
 CMD ["phpunit","."]

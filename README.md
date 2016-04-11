@@ -1,8 +1,8 @@
-# Docker Image for PHP Webdriver #
+# Docker Image for php-webdriver #
 
 ## Overview ##
 
-This repo contains an unofficial Docker image for Facebook's [PHP Webdriver library](https://github.com/facebook/php-webdriver), currently at version 1.1.
+This repo contains an unofficial Docker image for Facebook's [php-webdriver library](https://github.com/facebook/php-webdriver), currently at version 1.1.
 
 This image also includes [PHPUnit](https://github.com/sebastianbergmann/phpunit) version 5.2.
 
@@ -69,6 +69,14 @@ Note that by using Docker Compose's 'run' command, the php-webdriver container w
 When you're finished using the Selenium Grid, you can remove these containers:
 
     docker-compose rm -f
+
+## Customisation ##
+
+This image has been designed with customisation in mind.
+
+You may notice that this repo includes a script called `docker-entrypoint.sh`, which is run by the container at startup. This script will look for, and run, any executable files placed in the '/scripts/entrypoint.d' directory.
+
+This can be useful for performing pre-testing tasks on the php-webdriver container, or waiting for external resources/containers to be available.
 
 ## License ##
 
