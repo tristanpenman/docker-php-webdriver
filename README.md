@@ -55,9 +55,9 @@ An example Compose file for Docker Compose has also been included. This file con
 
 To run the example PHPUnit/php-webdriver tests, use the following command:
 
-    docker-compose run php-webdriver
+    docker-compose run --rm php-webdriver
 
-Note that by using Docker Compose's 'run' command, the php-webdriver container will be shut down once the tests have run, but the Selenium Grid will continue running in the background. You can verify this using `docker ps`:
+Bu using Docker Compose's 'run' command with the `--rm` option, the container will be automatically deleted after it shuts down. However, the Selenium Grid will continue running in the background. You can verify this using `docker ps`:
 
     # Summarised 'docker ps' output from my development machine:
 
