@@ -2,7 +2,7 @@
 
 ## Overview ##
 
-This repo contains an unofficial Docker image for Facebook's [php-webdriver library](https://github.com/facebook/php-webdriver), currently at version 1.1.
+This repo contains an unofficial Docker image for Facebook's [php-webdriver library](https://github.com/facebook/php-webdriver), currently at version 1.3.0.
 
 This image also includes [PHPUnit](https://github.com/sebastianbergmann/phpunit) version 5.2.
 
