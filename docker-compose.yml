@@ -12,6 +12,7 @@ services:
       - hub
     environment:
       - HUB_PORT_4444_TCP_ADDR=hub
+      - HUB_PORT_4444_TCP_PORT=4444
   firefox:
     image: selenium/node-firefox
     depends_on:
@@ -20,6 +21,7 @@ services:
       - hub
     environment:
       - HUB_PORT_4444_TCP_ADDR=hub
+      - HUB_PORT_4444_TCP_PORT=4444
   php-webdriver:
     depends_on:
       - chrome
@@ -28,6 +30,7 @@ services:
     image: tristanpenman/php-webdriver
     environment:
       - HUB_PORT_4444_TCP_ADDR=hub
+      - HUB_PORT_4444_TCP_PORT=4444
     links:
       - hub
     volumes:
